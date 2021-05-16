@@ -1,0 +1,61 @@
+{% extends 'donor/donorbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+<head>
+    <style>
+        .label {
+     color: white;
+     padding: 8px;
+   }
+   
+   .success {background-color: #4CAF50;} /* Green */
+   .info {background-color: #2196F3;} /* Blue */
+   .warning {background-color: #ff9800;} /* Orange */
+   .danger {background-color: #f44336;} /* Red */
+   .other {background-color: #e7e7e7; color: black;} /* Gray */
+    </style>
+   </head>
+<br><br>
+<div class="container">
+    <H4 class="text-center">Thông báo hỗ trợ</H4><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Tên bệnh nhân</th>
+                <th scope="col">Tuổi</th>
+                <th scope="col">ID bệnh viện</th>
+                <th scope="col">Tình trạng sức khỏe</th>
+                <th scope="col">Nhóm máu</th>
+                <th scope="col">Lượng máu</th>
+                <th scope="col">Ngày yêu cầu</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in blood_request %}
+            <tr>
+                <td> {{t.patient_name}}</td>
+                
+                <td>{{t.patient_age}}</td>
+                <td>{{t.hospitalID}}</td>
+                <td>{{t.reason}}</td>
+                <td>{{t.bloodgroup}}</td>
+                <td>{{t.unit}}</td>
+                <td>{{t.date}}</td>
+            
+                
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    
+    </table>
+</div>
+<!--
+developed By : sumit kumar
+facebook : fb.com/sumit.luv
+youtube : youtube.com/lazycoders
+-->
+
+{% endblock content %}

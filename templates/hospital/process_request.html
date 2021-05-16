@@ -1,0 +1,63 @@
+{% extends 'hospital/hospitalbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+<br><br>
+<div class="container">
+    {% if requests %}
+    <H4 class="text-center">Xử lý yêu cầu người dùng</H4><br>
+    {% if message %}
+   <h5 class="text-center" style="color: red;"> {{message}}</h5><br>
+{% else %}
+
+{% endif %}
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Tên bệnh nhân</th>
+                <th scope="col">Tuổi</th>
+                <th scope="col">Tình trạng sức khỏe</th>
+                <th scope="col">Nhóm máu</th>
+                <th scope="col">Lượng máu (in ml)</th>
+                <th scope="col">Ngày yêu cầu</th>
+                <th scope="col">Status</th>
+                <th class="text-right">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for t in requests %}
+            <tr>
+                <td> {{t.patient_name}}</td>
+                <td>{{t.patient_age}}</td>
+                
+                
+                <td>{{t.reason}}</td>
+                <td>{{t.bloodgroup}}</td>
+                <td>{{t.unit}}</td>
+                <td>{{t.date}}</td>
+                <td>{{t.status}}</td>
+                
+                
+                <td class="text-right">
+                    <button class="btn btn-primary badge-pill" style="width: 100px;"><a  style="text-decoration: none;color: white;" href="{% url 'update-approve-status_from_hospital' t.id  %}">Chấp nhận </a> </button>
+                    <button class="btn btn-danger badge-pill" style="width: 80px;"><a  style="text-decoration: none;color: white;" href="{% url 'update-reject-status_from_hospital' t.id  %}">Hủy bỏ</a> </button>
+                    
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    
+    </table>
+{% else %}
+<h5>Không có yêu cầu nào cả !</h5>
+{% endif %}
+
+</div>
+<!--
+developed By : sumit kumar
+facebook : fb.com/sumit.luv
+youtube : youtube.com/lazycoders
+-->
+
+{% endblock content %}
